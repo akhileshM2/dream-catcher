@@ -10,8 +10,10 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
-// Needed for security headers! Do not delete!
-app.use(helmet());
+// Add securiy headers
+if (process.env.NODE_ENV === 'production') {
+  app.use(helmet()); 
+}
 
 const PORT = process.env.PORT || 3001;
  
